@@ -4,6 +4,8 @@ contract ZombieFactory {
     uint dnaDigits = 16;
     uint dnaModulus = 10 ** dnaDigits;
 
+    event NewZombie(uint zombieId, string name, uint dna);
+
     struct Zombie {
         string name;
         uint dna;
