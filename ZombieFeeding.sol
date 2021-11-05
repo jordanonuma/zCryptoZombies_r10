@@ -29,8 +29,9 @@ contract ZombieFeeding is ZombieFactory {
     } //end function _triggerCooldown()
 
     function _isReady(Zombie storage _zombie) internal view returns(bool) {
-        
+        return (_zombie.readyTime <= now);
     } //end function _isReady()
+
     function feedAndMultiply(uint _zombieId, uint _targetDna, string memory _species) public {
         require(msg.sender == zombieToOwner[_zombieId]);
         Zombie storage myZombie = zombies[_zombieId]; //array 'myZombie' of structs type Zombie[]
