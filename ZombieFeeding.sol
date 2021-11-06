@@ -36,7 +36,7 @@ contract ZombieFeeding is ZombieFactory {
         require(msg.sender == zombieToOwner[_zombieId]);
         Zombie storage myZombie = zombies[_zombieId]; //array 'myZombie' of structs type Zombie[]
         _isReady(myZombie);
-        
+
         _targetDna = _targetDna % dnaModulus;
         uint newDna = (myZombie.dna + _targetDna) / 2;
 
@@ -44,6 +44,7 @@ contract ZombieFeeding is ZombieFactory {
             newDna = newDna - newDna % 100 + 99;
         } //end if()
         _createZombie("NoName", newDna);
+        _triggerCooldown(myZombie);
     } //end function feedAndMultiply()
 
     function feedOnKitty(uint _zombieId, uint _kittyId) public {
