@@ -10,5 +10,6 @@ contract ZombieHelper is ZombieFeeding {
 
     function changeName(uint zombieId, string calldata _newName) external aboveLevel(2, _zombieId) {
         require(zombieToOwner[_zombieId] == msg.sender);
+        zombies[_zombieId].name = _newName;
     } //end function changeName()
 } //end contract ZombieHelper{}
