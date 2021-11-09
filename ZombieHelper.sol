@@ -17,4 +17,8 @@ contract ZombieHelper is ZombieFeeding {
         require(zombieToOwner[_zombieId] == msg.sender);
         zombies[_zombieId].dna = _newDna;
     } //end function changeDna()
+
+    function getZombiesByOwner(address _owner) external view {
+    
+    } //end function getZombiesByOwner()
 } //end contract ZombieHelper{}
