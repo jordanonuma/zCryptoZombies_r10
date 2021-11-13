@@ -21,7 +21,7 @@ contract ZombieHelper is ZombieFeeding {
     } //end function levelUp()
     
     function setLevelUpFee(uint _fee) external onlyOwner {
-        
+        levelUpFee = _fee;
     } //end function setLevelUpFee()
 
     function changeName(uint _zombieId, string calldata _newName) external aboveLevel(2, _zombieId) {
