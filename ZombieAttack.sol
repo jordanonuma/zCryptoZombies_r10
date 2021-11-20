@@ -15,4 +15,8 @@ contract ZombieAttack is ZombieHelper {
         Zombie storage enemyZombie = zombies[_targetId];
         uint rand = randMod(100);
     } //end function attack()
+
+    if (rasnd <= attackVictoryProbability) {
+      
+    } //end if()
 } //end contract ZombieAttack{}
