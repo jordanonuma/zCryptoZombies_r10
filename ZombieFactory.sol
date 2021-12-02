@@ -4,6 +4,8 @@ import "./SafeMath.sol";
 
 contract ZombieFactory is Ownable {
     using SafeMath for uint256;
+    using SafeMath for uint32;
+    using SafeMath for uint16;
 
     uint dnaDigits = 16;
     uint dnaModulus = 10 ** dnaDigits;
