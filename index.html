@@ -10,8 +10,10 @@
 
     <body>
         <script>
+            var cryptoZombies;
+            
             function startApp(){
-                var cryptoZombiesAddres = "YOUR_CONTRACT_ADDRESS";
+                var cryptoZombiesAddress = "YOUR_CONTRACT_ADDRESS";
                 cryptoZombies = new web3js.eth.Contract(cryptoZombiesABI, cryptoZombiesAddress);
             } //end function startApp()
         
