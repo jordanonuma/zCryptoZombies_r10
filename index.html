@@ -16,6 +16,16 @@
             function startApp(){
                 var cryptoZombiesAddress = "YOUR_CONTRACT_ADDRESS";
                 cryptoZombies = new web3js.eth.Contract(cryptoZombiesABI, cryptoZombiesAddress);
+
+                var accountInterval = setInterval(function() {
+                // Check if account has changed
+                    if (web3.eth.accounts[0] !== userAccount) {
+                        userAccount = web3.eth.accounts[0];
+                        // Call some function to update the UI with the new account
+                        getZombiesByOwner(userAccount)
+                    }.then (displayZombies)
+                )
+                }, 100);
             } //end function startApp()
         
             function getZombieDetails(id) {
@@ -45,15 +55,7 @@
                 // Now you can start your app & access web3js freely:
                 startApp()
 
-                var accountInterval = setInterval(function() {
-                // Check if account has changed
-                    if (web3.eth.accounts[0] !== userAccount) {
-                        userAccount = web3.eth.accounts[0];
-                        // Call some function to update the UI with the new account
-                        getZombiesByOwner(userAccount);
-                    }.then (displayZombies)
-                )
-                }, 100);
+        
 
             
             }) //end window.addEventListener()
