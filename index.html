@@ -47,11 +47,12 @@
 
                 var accountInterval = setInterval(function() {
                 // Check if account has changed
-                if (web3.eth.accounts[0] !== userAccount) {
-                    userAccount = web3.eth.accounts[0];
-                    // Call some function to update the UI with the new account
-                    updateInterface();
-                }
+                    if (web3.eth.accounts[0] !== userAccount) {
+                        userAccount = web3.eth.accounts[0];
+                        // Call some function to update the UI with the new account
+                        getZombiesByOwner(userAccount);
+                    }.then (displayZombies)
+                )
                 }, 100);
 
             
