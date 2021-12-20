@@ -6,7 +6,7 @@ contract ExampleGame is ZBGameMode  {
 
     mapping (string => bool) internal bannedCards;
 
-    contructor() {
+    contructor() public {
         bannedCards["Leash"] = true;
         bannedCards["Bulldozer"] = true;
         bannedCards["Lawnmower"] = true;
@@ -50,6 +50,10 @@ contract ExampleGame is ZBGameMode  {
 
         changes.changePlayerMaxGooVials(Player.Player1, 8);
         changes.changePlayerMaxGooVials(Player.Player2, 8);
+
+        for (uint i = 0; i< gameSTate.playerStates.length; i++) {
+
+        } //end for()
     } //end function beforeMatchStart()
 
 } //end contract ExampleGame{}
