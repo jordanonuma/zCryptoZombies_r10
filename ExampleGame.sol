@@ -60,6 +60,7 @@ contract ExampleGame is ZBGameMode  {
                     cardCount++;
                 } //end if()
             } //end for()
+            changes.changePlayerCardsInDeck(Player(i), newCards, cardCount); //will call changePlayerCardsInDeck() twice if there are 2 players
         } //end for()
     } //end function beforeMatchStart()
 
