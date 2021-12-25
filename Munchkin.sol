@@ -2,8 +2,7 @@ pragma solidity 0.4.25;
 
 import "./ZB/ZBGameMode.sol";
 
-// 1. Change the name of this contract
-contract ExampleGame is ZBGameMode  {
+contract Munchkin is ZBGameMode  {
 
     function beforeMatchStart(bytes serializedGameState) external {
 
