@@ -1,5 +1,8 @@
 // SPDX-License-Identifier: MIT
 // from https://github.com/smartcontractkit/chainlink/blob/develop/contracts/src/v0.6/interfaces/AggregatorV3Interface.sol
+
+import "@chainlink/contracts/src/v0.6/interfaces/AggregatorV3Interface.sol";
+
 pragma solidity ^0.6.0;
 
 interface AggregatorV3Interface {
