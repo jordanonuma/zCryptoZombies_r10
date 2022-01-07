@@ -7,8 +7,8 @@ contract PriceConsumerV3 {
         priceFeed = AggregatorV3Interface(0x8A753747A1Fa494EC906cE90E9f37563A8AF630e);
     } //end constructor()
 
-    function getLatestPrice() public view returns(uint) {
-        (, int price,,,) = priceFeed.latestRoundData();
+    function getLatestPrice() public view returns(int) {
+        (,int price,,,) = priceFeed.latestRoundData();
         return price;
     } //end function getLatestPrice()
 
