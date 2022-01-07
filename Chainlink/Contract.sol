@@ -8,7 +8,8 @@ contract PriceConsumerV3 {
     } //end constructor()
 
     function getLatestPrice() public view returns(uint) {
-      
+        (, int price,,,) = priceFeed.latestRoundData();
+        return price;
     } //end function getLatestPrice()
 
 } //end contract PriceConsumerV3{}
