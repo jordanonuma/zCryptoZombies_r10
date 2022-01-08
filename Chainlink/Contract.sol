@@ -12,4 +12,8 @@ contract PriceConsumerV3 {
         return price;
     } //end function getLatestPrice()
 
+    function getDecimals() public view returns(uint8) {
+      
+    } //end function getDecimals()
+
 } //end contract PriceConsumerV3{}
