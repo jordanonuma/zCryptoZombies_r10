@@ -1,5 +1,7 @@
 pragma solidity ^0.6.7;
 
+import "./VRFConsumerBase.sol";
+
 contract PriceConsumerV3 {
 
     AggregatorV3Interface public priceFeed;
