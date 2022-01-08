@@ -13,7 +13,8 @@ contract PriceConsumerV3 {
     } //end function getLatestPrice()
 
     function getDecimals() public view returns(uint8) {
-      
+        uint8 decimals = priceFeed.decimals();
+        return decimals;
     } //end function getDecimals()
 
 } //end contract PriceConsumerV3{}
