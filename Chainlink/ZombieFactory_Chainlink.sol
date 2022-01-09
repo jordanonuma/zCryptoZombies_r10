@@ -25,10 +25,10 @@ contract ZombieFactory is Ownable, VRFConsumerBase {
 
     Zombie[] public zombies;
 
-    constructor() VRFConsumerBase {
+    constructor() VRFConsumerBase (
         0xb3dCcb4Cf7a26f6cf6B120Cf5A73875B7BBc655B, // VRF Coordinator
         0x01BE23585060835E02B77ef475b0Cc51aA1e0709  // LINK Token
-    } public {
+    ) public {
         
     } //end constructor() {}
 
