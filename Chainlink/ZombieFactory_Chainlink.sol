@@ -1,8 +1,9 @@
 pragma solidity >=0.5.0 <0.6.0;
 import "./Ownable.sol";
 import "./SafeMath.sol";
+import "./VRFConsumerBase.sol";
 
-contract ZombieFactory is Ownable {
+contract ZombieFactory is Ownable, VRFConsumerBase {
     using SafeMath for uint256;
     using SafeMath32 for uint32;
     using SafeMath16 for uint16;
@@ -23,6 +24,13 @@ contract ZombieFactory is Ownable {
     } //end struct Zombie{}
 
     Zombie[] public zombies;
+
+    constructor() VRFConsumerBase {
+        0xb3dCcb4Cf7a26f6cf6B120Cf5A73875B7BBc655B, // VRF Coordinator
+        0x01BE23585060835E02B77ef475b0Cc51aA1e0709  // LINK Token
+    } public {
+        
+    } //end constructor() {}
 
     mapping (uint => address) public zombieToOwner;
     mapping (address => uint) public ownerZombieCount;
