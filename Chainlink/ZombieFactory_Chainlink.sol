@@ -14,6 +14,10 @@ contract ZombieFactory is Ownable, VRFConsumerBase {
 
     event NewZombie(uint zombieId, string name, uint dna);
 
+    bytes32 public keyHash;
+    uint256 public fee;
+    uint256 public randomResult;
+
     struct Zombie {
         string name;
         uint dna;
