@@ -47,6 +47,10 @@ contract ZombieFactory is Ownable, VRFConsumerBase {
         emit NewZombie(id, _name, _dna);
     } //end function _createZombie()
 
+    function getRandomNumber() public returns(bytes32 requestId) {
+        return requestRandomness(keyHash, fee);
+    } //end function getRandomNumber()
+
     function _generateRandomDna(string memory _str) private view returns (uint) {
         uint rand = uint(keccak256(abi.encodePacked(_str)));
         return rand % dnaModulus;
