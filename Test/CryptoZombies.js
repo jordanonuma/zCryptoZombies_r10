@@ -3,6 +3,10 @@ const zombieNames = ["Zombie 1", "Zombie 2"];
 
 contract("CryptoZombies", (accounts) => {
     let [alice, bob] = accounts;
+    let contractInstance;
+    beforeEach(async () => {
+
+    }); //end beforeEach()
 
     it("should be able to create a new zombie", async () => {
         const contractInstance = await CryptoZombies.new();
