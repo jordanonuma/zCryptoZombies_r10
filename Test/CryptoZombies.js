@@ -17,15 +17,7 @@ contract("CryptoZombies", (accounts) => {
     }) //end it()
 
     it("should not allow two zombies", async () => {
-        try {
-            //try to create the second zombie
-            await contractInstance.createRandomZombie(zombieNames[0], {from: alice});
-            await utils.shouldThrow(contractInstance.createRandomZombie);
-            assert(true);
-        }
-        catch (err) {
-            return;
-        }
-        assert(false, "The contract did not throw.");
+        await contractInstance.createRandomZombie(zombieNames[0], {from: alice});
+        await utils.shouldThrow(contractInstance.createRandomZombie(zombieNames[1], {from:alice}));
     }) //end it()
 }) //end contract()
