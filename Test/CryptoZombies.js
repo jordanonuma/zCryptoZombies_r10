@@ -1,5 +1,8 @@
 const CryptoZombies = artifacts.require("CryptoZombies");
 const utils = require("./helpers/utils");
+const time = require("./helpers/time"); //to speed up simulated time between attaacks
+var expect = require('chai').expect; //to do logical and boolean checks
+
 const zombieNames = ["Zombie 1", "Zombie 2"];
 
 contract("CryptoZombies", (accounts) => {
