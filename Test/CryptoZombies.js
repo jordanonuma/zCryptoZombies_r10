@@ -17,7 +17,8 @@ contract("CryptoZombies", (accounts) => {
         const result = await contractInstance.createRandomZombie(zombieNames[0], {from:  alice});
         //assert.equal(result.receipt.status, true);
         expect(result.receipt.status).to.equal(true);
-        assert.equal(result.logs[0].args.name, zombieNames[0]);
+        //assert.equal(result.logs[0].args.name, zombieNames[0]);
+        expect(result.logs[0].args.name).to.equal(zombieNames[0]);
     }) //end it()
 
     it("should not allow two zombies", async () => {
