@@ -1,4 +1,5 @@
 const HDWalletProvider = require("truffle-hdwallet-provider");
+const LoomTruffleProvider = require('loom-truffle-provider');
 const mnemonic = "YOUR_MNEMONIC";
 
 // Module exports to make this configuration available to Truffle itself
