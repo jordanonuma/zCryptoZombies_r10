@@ -1,11 +1,13 @@
 pragma solidity 0.5.0;
 import "./EthPriceOracleInterface.sol";
+import "./Ownable.sol";
 
-contract CallerContract {
+contract CallerContract is Ownable {
     address private oracleAddress;
     EthPriceOracleInterface private oracleInstance;
+    event newOracleAddressEvent(address oracleAddress);
 
-    function setOracleInstanceAddress(address _oracleInstanceAddress) public {
+    function setOracleInstanceAddress(address _oracleInstanceAddress) public onlyOwner {
         oracleAddress = _oracleInstanceAddress;
         oracleInstance = EthPriceOracleInterface(oracleAddress);
     } //end function setOracleInstanceAddress()
