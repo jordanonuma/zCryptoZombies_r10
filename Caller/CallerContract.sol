@@ -3,11 +3,14 @@ import "./EthPriceOracleInterface.sol";
 import "./Ownable.sol";
 
 contract CallerContract is Ownable {
+    uint256 private ethPrice;
     address private oracleAddress;
     mapping(uint256=>bool) myRequests;
+    
     EthPriceOracleInterface private oracleInstance;
     event newOracleAddressEvent(address oracleAddress);
     event ReceivedNewRequestIdEvent(uint256 id);
+    event PriceUpdatedEvent(uint256 ethPrice, uint256 id);
 
     function setOracleInstanceAddress(address _oracleInstanceAddress) public onlyOwner {
         oracleAddress = _oracleInstanceAddress;
@@ -20,4 +23,10 @@ contract CallerContract is Ownable {
         myRequests[id] = true;
         emit ReceivedNewRequestIdEvent(id);
     } //end function updateEthPrice()
+
+    function callback(uint256 _ethPrice, uint256 _id) public {
+        require(myRequests[id] == true, "This request is not in my pending list.");
+        delete myRequests[id];
+        emit PriceUpdatedEvent(_ethPrice, _id);
+    } //end function callback()
 } //end contract CallerContract{}
