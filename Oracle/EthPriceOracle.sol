@@ -19,6 +19,7 @@ contract EthPriceOracle is Ownable {
     } //end function getLatestEthPrice()
 
     function setLatestEthPrice(uint256 _ethPrice, address callerAddress, uint256 id) public onlyOwner {
-    
+        require(pendingRequests[id], "This request is not in my pending list.");
+        delete myMapping[id];
     } //end function setLatestEthPrice()
 } //end contract EthPriceoracle{}
