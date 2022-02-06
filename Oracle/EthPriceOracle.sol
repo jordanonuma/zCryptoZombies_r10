@@ -17,4 +17,8 @@ contract EthPriceOracle is Ownable {
         emit GetLatestEthPriceEvent(msg.sender, id);
         return id;
     } //end function getLatestEthPrice()
+
+    function setLatestEthPrice(uint256 _ethPrice, address callerAddress, uint256 id) public onlyOwner {
+    
+    } //end function setLatestEthPrice()
 } //end contract EthPriceoracle{}
