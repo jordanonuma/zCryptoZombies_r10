@@ -23,11 +23,8 @@ async function filterEvents(oracleContract, web3js) {
     })
 
     oracleContract.events.SetLatestEthPriceEvent(async (err, event) => {
-        if (err) {
-            console.error('Error on event', err)
-            return
-        }
+        if (err) console.error('Error on event', err)
         
-        })
-    }
+    })
+    
 } //end function filterEvents()
