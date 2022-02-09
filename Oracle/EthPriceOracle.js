@@ -14,11 +14,20 @@ async function getOracleContract(web3js) {
 } //end function getOracleContract()
 
 async function filterEvents(oracleContract, web3js) {
-    oracleContract.events.GetLatestEthPriceEvent({ filter: { myParam: 1 }}, async (err, event) => {
-    if (err) {
-        console.error('Error on event', err)
-        return
-    }
-    await async function addRequestToQueue(event)
+    oracleContract.events.GetLatestEthPriceEvent(async (err, event) => {
+        if (err) {
+            console.error('Error on event', err)
+            return
+        }
+        await addRequestToQueue(event)
     })
+
+    oracleContract.events.SetLatestEthPriceEvent(async (err, event) => {
+        if (err) {
+            console.error('Error on event', err)
+            return
+        }
+        
+        })
+    }
 } //end function filterEvents()
