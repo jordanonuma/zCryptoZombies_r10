@@ -7,3 +7,8 @@ const CHUNK_SIZE = process.env.CHUNK_SIZE || 3
 const MAX_RETRIES = process.env.MAX_RETRIES || 5
 const OracleJSON = require('./oracle/build/contracts/EthPriceOracle.json')
 var pendingRequests = []
+
+async function getOracleContract(web3js) {
+    const networkId = await web3js.eth.net.getId()
+    const OracleJSON = new web3js.eth.Contract(myContractJSON.abi, myContractJSON.networks[networkId].address)
+} //end function getOracleContract()
