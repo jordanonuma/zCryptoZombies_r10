@@ -102,6 +102,6 @@ async function init () {
     })
     setInterval(async () => {
         // here
-
+        await processQueue(oracleContract, ownerAddress)
     }, SLEEP_INTERVAL)
 })() //end async()
