@@ -1,8 +1,9 @@
 pragma solidity 0.5.0;
 import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
+import "openzeppelin-solidity/contracts/access/Roles.sol";
 import "./CallerContractInterface.sol";
 
-contract EthPriceOracle is Ownable {
+contract EthPriceOracle {
     uint private randNonce = 0;
     uint private modulus = 1000;
     mapping(uint256=>bool) pendingRequests;
