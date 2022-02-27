@@ -58,9 +58,9 @@ contract EthPriceOracle {
         require(pendingRequests[id], "This request is not in my pending list.");
 
         Response memory resp;
-        resp = new Response(msg.sender, _callerAddress, _ethPrice);
-        resp = requestIdToRespons[_id];
-        
+        resp = Response(msg.sender, _callerAddress, _ethPrice);
+        requestIdToResponse[_id].push(resp);
+
         delete pendingRequests[id];
         CallerContractInterface callerContractInstance;
         callerContractInstance = CallerContractInterface(_callerAddress);
