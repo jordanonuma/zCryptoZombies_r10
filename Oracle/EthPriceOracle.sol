@@ -18,6 +18,12 @@ contract EthPriceOracle {
     event AddOracleEvent(address oracleAddress);
     event RemoveOracleEvent(address oracleAddress);
 
+    struct Response {
+        address oracleAddress;
+        address callerAddress;
+        uint256 ethPrice;
+    } //end struct{}
+    
     constructor (address _owner) public {
         owners.add(_owner);
     } //end constructor{}
