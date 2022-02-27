@@ -23,7 +23,7 @@ contract EthPriceOracle {
         address callerAddress;
         uint256 ethPrice;
     } //end struct{}
-    
+
     constructor (address _owner) public {
         owners.add(_owner);
     } //end constructor{}
@@ -56,6 +56,11 @@ contract EthPriceOracle {
 
     function setLatestEthPrice(uint256 _ethPrice, address _callerAddress, uint256 _id) public onlyOwner {
         require(pendingRequests[id], "This request is not in my pending list.");
+
+        Response memory resp;
+        resp = new Response(msg.sender, _callerAddress, _ethPrice);
+        resp = requestIdToRespons[_id];
+        
         delete pendingRequests[id];
         CallerContractInterface callerContractInstance;
         callerContractInstance = CallerContractInterface(_callerAddress);
