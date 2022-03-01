@@ -11,6 +11,7 @@ contract EthPriceOracle {
     uint private randNonce = 0;
     uint private modulus = 1000;
     uint private numOracles = 0;
+    uint private THRESHOLD = 0;
 
     mapping(uint256=>bool) pendingRequests;
     event GetLatestEthPriceEvent(address callerAddress, uint id);
@@ -60,6 +61,14 @@ contract EthPriceOracle {
         Response memory resp;
         resp = Response(msg.sender, _callerAddress, _ethPrice);
         requestIdToResponse[_id].push(resp);
+
+        uint numResponses = requestIdToResponse[_id].length;
+        if (numResponses == THRESHOLD) {
+            CallerContractInterface callerContractInstance;
+            callerContractInstance = CallerContractInterface(_callerAddress);
+            callerContractInstance.callback(_ethPrice, _id);
+            emit SetLatestEthPriceEvent(_ethPrice, _callerAddress);
+        } //end if()
 
         delete pendingRequests[id];
         CallerContractInterface callerContractInstance;
