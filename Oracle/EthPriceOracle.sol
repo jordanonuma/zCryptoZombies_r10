@@ -73,17 +73,13 @@ contract EthPriceOracle {
 
             computedEthPrice = computedEthPrice.div(numResponses); //to take the average of responses
 
-            pendingRequests[_id];
+            delete pendingRequests[id];
+            delete requestIdToResponse[_id];
+
             CallerContractInterface callerContractInstance;
             callerContractInstance = CallerContractInterface(_callerAddress);
-            callerContractInstance.callback(_ethPrice, _id);
-            emit SetLatestEthPriceEvent(_ethPrice, _callerAddress);
-        } //end if()
-
-        delete pendingRequests[id];
-        CallerContractInterface callerContractInstance;
-        callerContractInstance = CallerContractInterface(_callerAddress);
-        callerContractInstance.callback(_ethPrice, _id);
-        emit SetLatestEthPriceEvent(_ethPrice, _callerAddress);
+            callerContractInstance.callback(_computedEththPrice, _id);
+            emit SetLatestEthPriceEvent(_computedEthPrice, _callerAddress);
+        } //end if()    
     } //end function setLatestEthPrice()
 } //end contract EthPriceoracle{}
