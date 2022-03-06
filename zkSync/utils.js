@@ -28,6 +28,8 @@ async function initAccount(rinkebyWallet, zkSyncProvider, zksync) {
 
 async function registerAccount (wallet) {
     console.log(`Registering the ${wallet.address()} account on zkSync`)
-    
+    if (!await wallet.isSigningKeySet()) {
+      
+    } //end if()
 
 } //end function registerAccount()  
