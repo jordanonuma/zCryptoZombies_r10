@@ -35,5 +35,19 @@ async function registerAccount (wallet) {
     } //end if()
     
     const changePubkey = await wallet.setSigningKey()
-    await changePubkey.awaitReceipt
-} //end function registerAccount()  
+    await changePubkey.awaitReceipt()
+} //end function registerAccount()
+
+async function depositToZkSync (zkSyncWallet, token, amountToDeposit, ethers) {
+    const deposit = await zkSyncWallet.depositToSyncFromEthereum({
+        depositTo: zkSyncWallet.address(),
+        token: token,
+        amount: ethers.utils.parseEther(amountToDeposit)
+    })
+    try {
+        await deposit.awaitReceipt()
+    } catch (error) {
+        console.log('Error while awaiting confirmation from the zkSync operators.')
+        console.log(error)
+    }
+} //end function depositToZkSync()
