@@ -51,3 +51,8 @@ async function depositToZkSync (zkSyncWallet, token, amountToDeposit, ethers) {
         console.log(error)
     }
 } //end function depositToZkSync()
+
+async function transfer (from, toAddress, amountToTransfer, transferFee, token, zksync, ethers) {
+    const closestPackableAmount = ethers.utils.parseEther(zksync.utils.closestPackableTransactionAmount(amountToTransferInWei))
+    const closestPackableFee = ethers.utils.parseEther(zksync.utils.closestPackableTransactionFee(transferFeeInWei))
+} //end function transfer()
