@@ -70,6 +70,6 @@ async function transfer (from, toAddress, amountToTransfer, transferFee, token, 
 } //end function transfer()
 
 async function getFee (transactionType, address, token, zkSyncProvider, ethers) {
-    const feeInWei = await zkSyncProvider.getTrasnactionFee(trasnactionType, address, token)
-    return fee =  ethers.utils.formatEther(feeInWei.toString())
+    const feeInWei = await zkSyncProvider.getTransactionFee(transactionType, address, token)
+    return fee =  ethers.utils.formatEther(feeInWei.totalFee.toString())
 } //end function getFee()
