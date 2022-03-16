@@ -21,7 +21,8 @@
     console.log('Depositing')
     
     async utils.depositToZkSync(aliceZkSyncWallet, token, amountToDeposit, ethers) {
-    
+        await utils.displayZkSyncBalance(aliceZkSyncWallet, ethers)
+        await utils.registerAccount(aliceZkSyncWallet)
     } //end utils.depositToZkSync()
   
   })()
