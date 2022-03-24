@@ -42,7 +42,7 @@ async function depositToZkSync (zkSyncWallet, token, amountToDeposit, tokenset) 
     const deposit = await zkSyncWallet.depositToSyncFromEthereum({
         depositTo: zkSyncWallet.address(),
         token: token,
-        amount: tokenSet.parseEther(token, amountToDeposit)
+        amount: tokenSet.parseToken(token, amountToDeposit)
     })
     try {
         await deposit.awaitReceipt()
@@ -89,19 +89,26 @@ async function withdrawToEthereum (wallet, amountToWithdraw, withdrawalFee, toke
   
 } //end function withdrawToEthereum()
 
-async function displayZkSyncBalance (wallet, ethers) {
+async function displayZkSyncBalance (wallet, tokenSet) {
     const state = await wallet.getAccountState()
-    if (state.committed.balances.ETH) {
-        console.log(`Commited ETH balance for ${wallet.address()}: ${ethers.utils.formatEther(state.committed.balances.ETH)}`)
-    } else {
-        console.log(`Commited ETH balance for ${wallet.address()}: 0`)
-    } //end if-else{}
+    //Replaced for zksync displaying code
+        /* if (state.committed.balances.ETH) {
+            console.log(`Commited ETH balance for ${wallet.address()}: ${ethers.utils.formatEther(state.committed.balances.ETH)}`)
+        } else {
+            console.log(`Commited ETH balance for ${wallet.address()}: 0`)
+        } //end if-else{}
 
-    if (state.verified.balances.ETH) {
-        console.log(`Verified ETH balance for ${wallet.address()}: ${ethers.utils.formatEther(state.verified.balances.ETH)}`)
-    } else {
-        console.log(`Verified ETH balance for ${wallet.address()}: 0`)
-    } //end if-else{}
+        if (state.verified.balances.ETH) {
+            console.log(`Verified ETH balance for ${wallet.address()}: ${ethers.utils.formatEther(state.verified.balances.ETH)}`)
+        } else {
+            console.log(`Verified ETH balance for ${wallet.address()}: 0`)
+        } //end if-else{} */
+    
+    //zksync displaying code
+    const committedBalances = state.committed.committedBalancesconst verifiedBalances = state.verified.committedBalances
+    for (const property in committedBalances) {
+        console.log(`Committed ${property} balance for ${wallet.address()}: ${tokenSet.formatToken(property, committedBalances[property])}`)
+    } //end for()
 } //end function displayZkSyncBalance()
 
 module.exports = {
