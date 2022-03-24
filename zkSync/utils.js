@@ -109,6 +109,10 @@ async function displayZkSyncBalance (wallet, tokenSet) {
     for (const property in committedBalances) {
         console.log(`Committed ${property} balance for ${wallet.address()}: ${tokenSet.formatToken(property, committedBalances[property])}`)
     } //end for()
+
+    for (const property in verifiedBalances) {
+        console.log(`Verified ${property} balance for ${wallet.address()}: ${tokenSet.formatToken(property, verifiedBalances[property])}`)
+    } //end for()
 } //end function displayZkSyncBalance()
 
 module.exports = {
