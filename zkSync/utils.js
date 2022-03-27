@@ -53,8 +53,8 @@ async function depositToZkSync (zkSyncWallet, token, amountToDeposit, tokenset) 
 } //end function depositToZkSync()
 
 async function transfer (from, toAddress, amountToTransfer, transferFee, token, zksync, tokenSet) {
-    const closestPackableAmount = zksync.utils.closestPackableTransactionAmount(tokenSet.parseToken(amountToTransfer))
-    const closestPackableFee = zksync.utils.closestPackableTransactionFee(tokenSet.parseToken(transferFee))
+    const closestPackableAmount = zksync.utils.closestPackableTransactionAmount(tokenSet.parseToken(token, amountToTransfer))
+    const closestPackableFee = zksync.utils.closestPackableTransactionFee(tokenSet.parseToken(token, transferFee))
 
     const transfer = await from.syncTransfer({
         to: toAddress,
@@ -74,9 +74,9 @@ async function getFee (transactionType, address, token, zkSyncProvider, ethers) 
     return ethers.utils.formatEther(feeInWei.totalFee.toString())
 } //end function getFee()
 
-async function withdrawToEthereum (wallet, amountToWithdraw, withdrawalFee, token, zksync, ethers) {
-    const closestPackableAmount = zksync.utils.closestPackableTransactionAmount(ethers.utils.parseEther(amountToWithdraw))
-    const closestPackableFee = zksync.utils.closestPackableTransactionFee(ethers.utils.parseEther(withdrawalFee))
+async function withdrawToEthereum (wallet, amountToWithdraw, withdrawalFee, token, zksync, tokenSet) {
+    const closestPackableAmount = zksync.utils.closestPackableTransactionAmount(tokenSet.parseToken(amountToWithdraw))
+    const closestPackableFee = zksync.utils.closestPackableTransactionFee(tokenSet.parseToken(withdrawalFee))
     const withdraw = await wallet.withdrawFromSyncToEthereum({
         ethAddress: wallet.address(),
         token: token,
